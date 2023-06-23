@@ -1,10 +1,12 @@
 sonata_admin:
-    title: 'Sonata Admin'
+    title: 'Mon admin'
+    templates:
+        dashboard: '@SonataAdmin/Core/dashboard.html.twig'
     dashboard:
-        blocks:
-            - { type: sonata.admin.block.admin_list, position: left }
-
-sonata_block:
-    blocks:
-        sonata.admin.block.admin_list:
-            contexts: [admin]
+        groups:
+            sonata.admin.group.content:
+                label: Utilisateurs
+                items:
+                    - App\Admin\UserAdmin
+    security:
+        handler: App\Security\SonataAdminSecurityHandler
